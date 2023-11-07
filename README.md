@@ -52,13 +52,16 @@ Contains the main memory block, a sub-chain of memory segments, and references t
 
 **mems_print_stats():** Prints statistics about the MeMS system, including the number of pages used, unused memory, main chain length, and details about each node in the main chain and each segment in the sub-chain.
 For every Subchain in the free list print the data as follows
+
                       MAIN[starting_mems_vitual_address:ending_mems_vitual_address] -> <HOLE or PROCESS>[starting_mems_vitual_address:ending_mems_vitual_address] <-> ..... <-> NULL
                       
 After printing the whole freelist print the following stats
+
                       Page used: <Total Pages used by the user>
                       Space unused: <Total space mapped but not used by user>
                       Main Chain Length: <Length of the main chain>
                       Sub-chain Length array: <Array denoting the length of the subchains>
+                      
                       
 mems_get(void *v_ptr): Returns the MeMS physical address mapped to the given MeMS virtual address.
 
