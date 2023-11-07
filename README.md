@@ -60,9 +60,10 @@ Contains the main memory block, a sub-chain of memory segments, and references t
                       Main Chain Length: <Length of the main chain>
                       Sub-chain Length array: <Array denoting the length of the subchains>
                       
-**mems_get(void *v_ptr):** Returns the MeMS physical address mapped to the given MeMS virtual address.
+mems_get(void *v_ptr): Returns the MeMS physical address mapped to the given MeMS virtual address.
 
-**mems_free(void *v_ptr):** Frees the memory pointed to by the MeMS virtual address, marking the corresponding sub-chain node as HOLE and combining adjacent HOLE nodes to reduce fragmentation.
+
+mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address, marking the corresponding sub-chain node as HOLE and combining adjacent HOLE nodes to reduce fragmentation.
 
 
 ## How to Use these functions in your program
