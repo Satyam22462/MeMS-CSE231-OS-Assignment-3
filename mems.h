@@ -70,6 +70,19 @@ void mems_finish(){
     MN*previous=NULL;
     while(headNode){
         munmap(headNode->memory, ((headNode->main_ending_address-headNode->main_starting_address)+1));
+        if(headNode->sub_chain){
+            MS *segment = headNode->sub_chain;
+            
+            while (segment){
+                MS *segment2=segment;
+                segment = segment->next;
+                munmap(segment2,sizeof(struct MemorySegment));
+
+                
+
+            }
+        }
+
         previous=headNode;
         headNode=headNode->down;
         munmap(previous,sizeof(struct MainNode));
