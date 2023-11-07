@@ -37,9 +37,13 @@ Contains the main memory block, a sub-chain of memory segments, and references t
 
 ## Functions
 mems_init(): Initializes the MeMS system, including the head of the free list and the starting MeMS virtual address. It also sets other global variables.
+
 mems_finish(): Called at the end of the MeMS system, it unmaps allocated memory using the munmap system call.
+
 mems_malloc(size_t size): Allocates memory of the specified size by reusing a segment from the free list if available. If no suitable segment is found, it uses the mmap system call to request more memory from the OS and updates the free list accordingly.
+
 mems_print_stats(): Prints statistics about the MeMS system, including the number of pages used, unused memory, main chain length, and details about each node in the main chain and each segment in the sub-chain.
+
                         For every Subchain in the free list print the data as follows
                       MAIN[starting_mems_vitual_address:ending_mems_vitual_address] -> <HOLE or PROCESS>[starting_mems_vitual_address:ending_mems_vitual_address] <-> ..... <-> NULL
                         After printing the whole freelist print the following stats
@@ -54,18 +58,24 @@ mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address,
 
 ## How to Use these functions in your program
 Include the necessary headers in your C program:
+
 #include"mems.h"
 
 
 Initialize the MeMS system using mems_init().
+
 Allocate and free memory using mems_malloc() and mems_free().
+
 Print memory statistics using mems_print_stats().
+
 To clean up the MeMS system, call mems_finish() at the end of your program.
 
 
 ## How to run c program
 After implementing functions in mems.h follow the below steps to run example.c file
+
 $ make
+
 $ ./example
 
 ## Example Output
