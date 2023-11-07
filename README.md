@@ -14,24 +14,32 @@ MeMS is a custom memory management system implemented in C for efficient memory 
 
 ## Key Features
 Memory Allocation: Allocates memory in multiples of PAGE_SIZE.
+
 Free List: Manages free memory using a free list data structure.
+
 Memory Reuse: Reuses available memory segments from the free list.
+
 Dynamic Memory Growth: Requests more memory from the OS when needed.
+
 Memory Mapping: Maps MeMS virtual addresses to MeMS physical addresses.
+
 Printing statistics about memory usage, including the number of pages used, unused memory, main chain length, and sub-chain length.
 
 
 ## Code Structure
 Defines data structures (MemorySegment and MainNode) to represent memory segments and main memory nodes.
+
 Provides functions for initialization, memory allocation, statistics printing, and memory cleanup.
+
 Global variables are used to maintain memory-related data.
 
 
 ## Data Structures
-MemorySegment (MS)
+#### MemorySegment (MS)
 Represents a memory segment.
 Contains information such as size, type (0 for HOLE, 1 for PROCESS), the previous and next segments,starting and ending virtual addresses, and pointer to addresses to mems physical memory.
-MainNode (MN)
+
+#### MainNode (MN)
 Represents a node in the main chain.
 Contains the main memory block, a sub-chain of memory segments, and references to the previous and next nodes in the main chain
 
