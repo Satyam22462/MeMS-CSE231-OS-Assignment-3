@@ -30,7 +30,7 @@ Global variables are used to maintain memory-related data.
 ## Data Structures
 MemorySegment (MS)
 Represents a memory segment.
-Contains information such as size, type (0 for HOLE, 1 for PROCESS), the previous and next segments, virtual addresses, and addresses of the physical memory.
+Contains information such as size, type (0 for HOLE, 1 for PROCESS), the previous and next segments,starting and ending virtual addresses, and pointer to addresses to mems physical memory.
 MainNode (MN)
 Represents a node in the main chain.
 Contains the main memory block, a sub-chain of memory segments, and references to the previous and next nodes in the main chain
@@ -40,30 +40,33 @@ mems_init(): Initializes the MeMS system, including the head of the free list an
 mems_finish(): Called at the end of the MeMS system, it unmaps allocated memory using the munmap system call.
 mems_malloc(size_t size): Allocates memory of the specified size by reusing a segment from the free list if available. If no suitable segment is found, it uses the mmap system call to request more memory from the OS and updates the free list accordingly.
 mems_print_stats(): Prints statistics about the MeMS system, including the number of pages used, unused memory, main chain length, and details about each node in the main chain and each segment in the sub-chain.
+                        For every Subchain in the free list print the data as follows
+                      MAIN[starting_mems_vitual_address:ending_mems_vitual_address] -> <HOLE or PROCESS>[starting_mems_vitual_address:ending_mems_vitual_address] <-> ..... <-> NULL
+                        After printing the whole freelist print the following stats
+                      Page used: <Total Pages used by the user>
+                      Space unused: <Total space mapped but not used by user>
+                      Main Chain Length: <Length of the main chain>
+                      Sub-chain Length array: <Array denoting the length of the subchains>
+                      
 mems_get(void *v_ptr): Returns the MeMS physical address mapped to the given MeMS virtual address.
 mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address, marking the corresponding sub-chain node as HOLE and combining adjacent HOLE nodes to reduce fragmentation.
 
 
-## How to Use
+## How to Use these functions in your program
 Include the necessary headers in your C program:
-#include <stdio.h>
+#include"mems.h"
 
-#include <stdlib.h>
 
-#include <unistd.h>
-
-#include <sys/mman.h>
-
-#include <sys/sysinfo.h>
-
-#include <stdint.h>
-
-Implement the functions according to your requirements.
 Initialize the MeMS system using mems_init().
 Allocate and free memory using mems_malloc() and mems_free().
 Print memory statistics using mems_print_stats().
 To clean up the MeMS system, call mems_finish() at the end of your program.
 
+
+## How to run c program
+After implementing functions in mems.h follow the below steps to run example.c file
+$ make
+$ ./example
 
 ## Example Output
 
