@@ -1,6 +1,6 @@
 # MeMS:Memory Management System [CSE231 OS Assignment-3]
 
-# Documentaion
+# Documentation
 https://docs.google.com/document/d/e/2PACX-1vTiMFYWuqKHlGG5cWZfVgHx3T-H_HYAjIc_yJ_kX5171FPiZCmyyJB0BJUuVplX3pY4ycw8bFf4gaxG/pub
 
 
