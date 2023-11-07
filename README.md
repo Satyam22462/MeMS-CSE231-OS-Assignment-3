@@ -47,10 +47,15 @@ mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address,
 ## How to Use
 Include the necessary headers in your C program:
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <unistd.h>
+
 #include <sys/mman.h>
+
 #include <sys/sysinfo.h>
+
 #include <stdint.h>
 
 Implement the functions according to your requirements.
