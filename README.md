@@ -15,5 +15,60 @@ Starting MeMS Virtual Address= 1000
 
 
 ### [GitHub Repository](https://github.com/Satyam22462/MeMS-CSE231-OS-Assignment-3.git)
+MeMS (Memory Management System)
+
+Overview
+
+MeMS is a custom memory management system implemented in C for efficient memory allocation and management. It is designed to minimize memory fragmentation and dynamically allocate memory in multiples of the system's PAGE_SIZE using mmap and munmap system calls.
+
+
+Key Features
+Memory Allocation: Allocates memory in multiples of PAGE_SIZE.
+Free List: Manages free memory using a free list data structure.
+Memory Reuse: Reuses available memory segments from the free list.
+Dynamic Memory Growth: Requests more memory from the OS when needed.
+Memory Mapping: Maps MeMS virtual addresses to MeMS physical addresses.
+Printing statistics about memory usage, including the number of pages used, unused memory, main chain length, and sub-chain length.
+
+
+Code Structure
+Defines data structures (MemorySegment and MainNode) to represent memory segments and main memory nodes.
+Provides functions for initialization, memory allocation, statistics printing, and memory cleanup.
+Global variables are used to maintain memory-related data.
+
+
+Data Structures
+MemorySegment (MS)
+Represents a memory segment.
+Contains information such as size, type (0 for HOLE, 1 for PROCESS), the previous and next segments, virtual addresses, and addresses of the physical memory.
+MainNode (MN)
+Represents a node in the main chain.
+Contains the main memory block, a sub-chain of memory segments, and references to the previous and next nodes in the main chain
+
+Functions
+mems_init(): Initializes the MeMS system, including the head of the free list and the starting MeMS virtual address. It also sets other global variables.
+mems_finish(): Called at the end of the MeMS system, it unmaps allocated memory using the munmap system call.
+mems_malloc(size_t size): Allocates memory of the specified size by reusing a segment from the free list if available. If no suitable segment is found, it uses the mmap system call to request more memory from the OS and updates the free list accordingly.
+mems_print_stats(): Prints statistics about the MeMS system, including the number of pages used, unused memory, main chain length, and details about each node in the main chain and each segment in the sub-chain.
+mems_get(void *v_ptr): Returns the MeMS physical address mapped to the given MeMS virtual address.
+mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address, marking the corresponding sub-chain node as HOLE and combining adjacent HOLE nodes to reduce fragmentation.
+
+
+How to Use
+Include the necessary headers in your C program:
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/sysinfo.h>
+#include <stdint.h>
+
+Implement the functions according to your requirements.
+Initialize the MeMS system using mems_init().
+Allocate and free memory using mems_malloc() and mems_free().
+Print memory statistics using mems_print_stats().
+To clean up the MeMS system, call mems_finish() at the end of your program.
+
+
 
 
