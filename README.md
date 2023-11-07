@@ -68,7 +68,7 @@ mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address,
 ## How to Use these functions in your program
 Include the necessary headers in your C program:
 
-#include"mems.h"
+**#include"mems.h"**
 
 
 Initialize the MeMS system using mems_init().
@@ -83,9 +83,9 @@ To clean up the MeMS system, call mems_finish() at the end of your program.
 ## How to run c program
 After implementing functions in mems.h follow the below steps to run example.c file
 
-**$ make
+**$ make**
 
-$ ./example**
+**$ ./example**
 
 ## Example Output
 
