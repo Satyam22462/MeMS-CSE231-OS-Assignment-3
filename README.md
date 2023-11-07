@@ -83,9 +83,9 @@ To clean up the MeMS system, call mems_finish() at the end of your program.
 ## How to run c program
 After implementing functions in mems.h follow the below steps to run example.c file
 
-**$ make**
+                          **$ make**
 
-**$ ./example**
+                          **$ ./example**
 
 ## Example Output
 
