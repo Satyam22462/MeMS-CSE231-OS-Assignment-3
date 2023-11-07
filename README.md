@@ -52,7 +52,7 @@ Contains the main memory block, a sub-chain of memory segments, and references t
 
 **mems_print_stats():** Prints statistics about the MeMS system, including the number of pages used, unused memory, main chain length, and details about each node in the main chain and each segment in the sub-chain.
 
-* For every Subchain in the free list print the data as follows:
+*For every Subchain in the free list print the data as follows:*
 
                       MAIN[starting_mems_vitual_address:ending_mems_vitual_address] -> <HOLE or PROCESS>[starting_mems_vitual_address:ending_mems_vitual_address] <-> ..... <-> NULL
                       
@@ -70,18 +70,14 @@ mems_free(void *v_ptr): Frees the memory pointed to by the MeMS virtual address,
 
 
 ## How to Use these functions in your program
-Include the necessary headers in your C program:
-
+* Include the necessary headers in your C program:
+  
     #include"mems.h"
 
-
-Initialize the MeMS system using mems_init().
-
-Allocate and free memory using mems_malloc() and mems_free().
-
-Print memory statistics using mems_print_stats().
-
-To clean up the MeMS system, call mems_finish() at the end of your program.
+* Initialize the MeMS system using mems_init().
+* Allocate and free memory using mems_malloc() and mems_free().
+* Print memory statistics using mems_print_stats().
+* To clean up the MeMS system, call mems_finish() at the end of your program.
 
 
 ## How to run c program
